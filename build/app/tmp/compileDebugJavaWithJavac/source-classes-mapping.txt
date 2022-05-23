@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/top_football_team/MainActivity.java
+ com.example.top_football_team.MainActivity
+com/example/top_football_team/BuildConfig.java
+ com.example.top_football_team.BuildConfig
