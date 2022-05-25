@@ -23,39 +23,38 @@ class PremierLeagueRepository {
   }
 
   @visibleForTesting
-  final PremierLeagueService premierLeagueService = PremierLeagueService();
-
-  ///returns the top recent performing premier league team in the last 30 days.
-  ///In the extreme case where all teams draw or there are no matches available a null value is returned.
-  ///Where more than one team has the same number of wins then the team that has won the most recent match.
-  ///or has won a match that is retrieve later in the 'matches' database resource is prioritised.
-  Future<Team?> getTopPremierLeagueTeam() async {
-    final Season season = await getRecentSeason();
-    final List<Match> recentMatches = await getRecentMatches(season);
-    final int topTeamId = getTopTeamsId(recentMatches);
-    if (topTeamId != -1) {
-      return await getTopTeam(topTeamId);
-    }
-    return null;
-  }
+  PremierLeagueService premierLeagueService = PremierLeagueService();
 
   ///returns the most recent premier league season.
   @visibleForTesting
   Future<Season> getRecentSeason() async {
-    final standingsJson = await premierLeagueService.getStandings();
+    final standingsJson = await premierLeagueService.getStandingsJson();
     return Season.fromJson(standingsJson[JsonKeys.season]);
+  }
+
+  ///function to get 'dateTo' query parameter for matches that is dependant on the season finishing date.
+  @visibleForTesting
+  DateTime getDateTo(DateTime seasonEndDate) {
+    DateTime dateTo = DateTimeHelper.today();
+    if (dateTo.isAfter(seasonEndDate)) {
+      //if season is finished, use season end date.
+      dateTo = seasonEndDate;
+    }
+    return dateTo;
+  }
+
+  ///returns 'dateFrom' query parameter for matches, that is 30 days less than 'dateTo parameter.
+  @visibleForTesting
+  DateTime getDateFrom(DateTime dateTo) {
+    return dateTo.subtract(const Duration(days: 30)); // last 30 days.
   }
 
   ///returns the most recent matches that occurred in the last 30 days as a list of match objects.
   ///based on the end date of the most recent season.
   @visibleForTesting
   Future<List<Match>> getRecentMatches(Season season) async {
-    DateTime dateTo = DateTimeHelper.today();
-    if (dateTo.isAfter(season.endDate)) {
-      //if season is finished, used season end date.
-      dateTo = season.endDate;
-    }
-    final dateFrom = dateTo.subtract(const Duration(days: 30)); // last 30 days.
+    DateTime dateTo = getDateTo(season.endDate);
+    final dateFrom = getDateFrom(dateTo);
     final recentMatchesJson = await premierLeagueService.getRecentMatchesJson(
       dateTo: DateTimeHelper.dateTimeToString(dateTo),
       dateFrom: DateTimeHelper.dateTimeToString(dateFrom),
@@ -107,7 +106,6 @@ class PremierLeagueRepository {
   int getTopTeamsId(List<Match> recentMatches) {
     int topTeamsId = -1; //top team id initialised to -1.
     Map<int, int> tally = {}; //tally to keep track of team ids and their wins.
-
     for (Match match in recentMatches) {
       int? winnersId;
       if (match.winner == MatchWinner.HOMETEAM) {
@@ -135,7 +133,21 @@ class PremierLeagueRepository {
   ///returns a team object for team with most number of wins based on the id of team.
   @visibleForTesting
   Future<Team> getTopTeam(int id) async {
-    final topTeamJson = await premierLeagueService.getTeam(id: id);
+    final topTeamJson = await premierLeagueService.getTeamJson(id: id);
     return Team.fromJson(topTeamJson);
+  }
+
+  ///returns the top recent performing premier league team in the last 30 days.
+  ///In the extreme case where all teams draw or there are no matches available a null value is returned.
+  ///Where more than one team has the same number of wins than the team that has won the most recent match.
+  ///or has won a match that is retrieveD later in the 'matches' database resource is prioritised.
+  Future<Team?> getTopPremierLeagueTeam() async {
+    final Season season = await getRecentSeason();
+    final List<Match> recentMatches = await getRecentMatches(season);
+    final int topTeamId = getTopTeamsId(recentMatches);
+    if (topTeamId != -1) {
+      return await getTopTeam(topTeamId);
+    }
+    return null;
   }
 }

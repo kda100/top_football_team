@@ -1,4 +1,6 @@
 // ignore: file_names
+import '../constants/strings.dart';
+
 ///Api Response Type.
 
 // ignore_for_file: constant_identifier_names
@@ -19,7 +21,7 @@ class ApiResponse {
 
   ApiResponse.error()
       : responseType = ApiResponseType.ERROR,
-        _message = "Something went wrong";
+        _message = errorMessage;
 
   ApiResponse.loading() : responseType = ApiResponseType.LOADING;
 

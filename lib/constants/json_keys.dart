@@ -1,3 +1,4 @@
+///consts keys contained in json data of https://api.football-data.org/v4/ resources.
 class JsonKeys {
   static const id = "id";
   static const name = "name";

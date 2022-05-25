@@ -45,7 +45,8 @@ class _TopPremierLeagueTeamScreenState
         final Team? team = topPremierLeagueTeamProvider.getTopPremierLeagueTeam;
         if (team != null) {
           return Card(
-            child: OrientationBuilder(builder: (context, orientation) { //handles UI for different orientations.
+            child: OrientationBuilder(builder: (context, orientation) {
+              //handles UI for different orientations.
               if (orientation == Orientation.portrait) {
                 return PortraitTeamWidget(team: team);
               } else {
@@ -57,7 +58,7 @@ class _TopPremierLeagueTeamScreenState
           );
         } else {
           return const Center(
-            child: Text("No Top Team"),
+            child: Text(noTeamMessage),
           );
         }
       }),

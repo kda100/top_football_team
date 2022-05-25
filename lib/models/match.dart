@@ -9,6 +9,12 @@ class Match {
   final int awayTeamId;
   final MatchWinner winner;
 
+  Match(
+      {required this.id,
+      required this.homeTeamId,
+      required this.awayTeamId,
+      required this.winner});
+
   Match.fromJson(Map<String, dynamic> json)
       : id = json[JsonKeys.id],
         homeTeamId = json[JsonKeys.homeTeam][JsonKeys.id],

@@ -6,6 +6,12 @@ class Season {
   final int id; //not necessary
   final DateTime endDate;
 
+  @visibleForTesting
+  Season({
+    required this.id,
+    required this.endDate,
+  });
+
   Season.fromJson(Map<String, dynamic> json)
       : id = json[JsonKeys.id],
         endDate = DateTime.parse(json[JsonKeys.endDate]);

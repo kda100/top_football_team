@@ -9,8 +9,7 @@ import '../models/team.dart';
 ///when business logic has finished a Team object has been returned then class notifies UI of change and updates it.
 class TopPremierLeagueTeamProvider with ChangeNotifier {
   @visibleForTesting
-  final PremierLeagueRepository premierLeagueRepository =
-      PremierLeagueRepository();
+  PremierLeagueRepository premierLeagueRepository = PremierLeagueRepository();
 
   @visibleForTesting
   ApiResponse apiResponse = ApiResponse.loading(); //starts of as loading.
