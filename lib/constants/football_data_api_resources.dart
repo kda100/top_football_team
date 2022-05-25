@@ -1,7 +1,7 @@
 //Sign up to https://www.football-data.org/ to get your API_KEY then add to header.
 
 const Map<String, String> headers = {
-  "X-Auth-Token": "YOUR_API_KEY"
+  "X-Auth-Token": "c72b06bc90614e13a780910779372185"
 }; //request header necessary for getting data. Add your API_KEY here.
 
 const String baseUrl = "https://api.football-data.org/v4/";
