@@ -4,7 +4,7 @@ Ios and Android app to display the most recent best performing team in the Premi
 
 To start go to https://www.football-data.org/ and sign up to get your own API_KEY.
 
-Add this API_KEY to headers variable in the 'constants/football_data_api_resource' file.
+Add this API_KEY to headers variable in the 'lib/constants/football_data_api_resource' file.
 
 Then you may build the project.
 
