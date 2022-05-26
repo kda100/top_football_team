@@ -10,4 +10,4 @@ const String standingsUrl =
 const String matchesUrl =
     "${baseUrl}competitions/PL/matches"; //url to get current premier league standings, only used to get season end date.
 const String teamsUrl =
-    "$baseUrl/teams"; //used to get teams, an id parameter can be added to only retrieved on team.
+    "$baseUrl/teams"; //used to get teams, an id parameter can be added to only retrieve data on team.

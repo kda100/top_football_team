@@ -5,7 +5,7 @@ import 'package:top_football_team/helpers/premier_league_service_helper.dart';
 
 import '../constants/football_data_api_resources.dart';
 
-///Singleton service class that requests json data from the football api data.
+///Singleton service class that requests json data from the football api data on premier league info.
 ///It strictly only returns json data converted into dart objects once http requests are made.
 
 class PremierLeagueService {
