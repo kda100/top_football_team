@@ -8,4 +8,6 @@ Add this API_KEY to headers variable in the 'lib/constants/football_data_api_res
 
 Then you may build the project.
 
+Unit and widget tests can be found in the test folder
+
 Find the 'app-release.apk' in the 'build/app/outputs/apk/release/' folder.
