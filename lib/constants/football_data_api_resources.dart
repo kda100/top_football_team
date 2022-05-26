@@ -6,8 +6,8 @@ const Map<String, String> headers = {
 
 const String baseUrl = "https://api.football-data.org/v4/";
 const String standingsUrl =
-    "${baseUrl}competitions/PL/standings"; //url to get details of premier league matches data can be filtered by adding query params.
+    "${baseUrl}competitions/PL/standings"; //url to get current premier league standings, only used to get season end date.
 const String matchesUrl =
-    "${baseUrl}competitions/PL/matches"; //url to get current premier league standings, only used to get season end date.
+    "${baseUrl}competitions/PL/matches"; //url to get details of premier league matches data can be filtered by adding query params.
 const String teamsUrl =
     "$baseUrl/teams"; //used to get teams, an id parameter can be added to only retrieve data on team.
