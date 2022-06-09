@@ -9,7 +9,6 @@ void main() {
     test("Is a Singleton", () {
       final PremierLeagueRepository premierLeagueRepository =
           PremierLeagueRepository();
-
       expect(PremierLeagueRepository() == premierLeagueRepository, true);
     });
   });

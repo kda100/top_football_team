@@ -28,18 +28,13 @@ class JsonMaps {
   }
 
   ///returns readable Team Json Map to create Team object
-  static Map<String, dynamic> genTeamJson(
-      {required int teamId,
-      required String name,
-      required String crestLink,
-      required String venue,
-      required int yearFounded}) {
+  static Map<String, dynamic> genTeamJson({required int teamId}) {
     return {
       JsonKeys.id: teamId,
-      JsonKeys.name: name,
-      JsonKeys.crestLink: crestLink,
-      JsonKeys.venue: venue,
-      JsonKeys.yearFounded: yearFounded,
+      JsonKeys.name: "Manchester City FC",
+      JsonKeys.crestLink: "https://crests.football-data.org/65.png",
+      JsonKeys.venue: "Etihad Stadium",
+      JsonKeys.yearFounded: 1880,
     };
   }
 }

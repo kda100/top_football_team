@@ -1,7 +1,7 @@
 import 'package:top_football_team/constants/json_keys.dart';
 import 'package:top_football_team/models/match_winner.dart';
 
-///models each match
+///models each premier league match.
 
 class Match {
   final int id; //not necessary

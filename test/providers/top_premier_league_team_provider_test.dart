@@ -22,7 +22,7 @@ void main() {
     });
   });
 
-  group("TopPremierLeagueTeamProvider function tests", () {
+  group("TopPremierLeagueTeamProvider function tests - ", () {
     late TopPremierLeagueTeamProvider topPremierLeagueTeamProvider;
     late MockPremierLeagueRepository mockPremierLeagueRepository;
     late bool listenersNotified;
@@ -30,7 +30,8 @@ void main() {
     /// sets up provider object and mock repository, then assign repository to provider,
     /// so functionality can be mocked.
     setUp(() {
-      listenersNotified = false;
+      listenersNotified =
+          false; //for testing notifyListeners() function of provider
       topPremierLeagueTeamProvider = TopPremierLeagueTeamProvider();
       mockPremierLeagueRepository = MockPremierLeagueRepository();
       topPremierLeagueTeamProvider.premierLeagueRepository =

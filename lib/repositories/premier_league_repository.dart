@@ -9,9 +9,9 @@ import '../models/match.dart';
 import '../services/premier_league_service.dart';
 
 ///Singleton.
-///This class handle the business logic of the application.
+///This class handles the business logic of the application.
 ///Data json is retrieved from the premier league service and converted into objects.
-///The further processed to extract the recent top performing premier league team based on their number of wins. (30 days).
+///Then further processed to extract the recent top performing premier league team based on their number of wins. (30 days).
 
 class PremierLeagueRepository {
   static final PremierLeagueRepository _instance = PremierLeagueRepository._();
@@ -79,7 +79,7 @@ class PremierLeagueRepository {
     }
   }
 
-  ///function that returns the id of the team win the greatest number of wins,
+  ///function that returns the id of the team with the greatest number of wins,
   ///based on the current team that won a match (winnersId) and the current team with the most wins (topTeamsId)
   @visibleForTesting
   int setTopTeamId({
@@ -100,7 +100,8 @@ class PremierLeagueRepository {
   }
 
   ///returns the teams id with the most number of wins
-  ///or if teams have same wins the team with most recent wins/wins later in the database are prioritised.
+  ///or if teams have same wins the team with most recent win
+  ///or win later in the database are prioritised.
   ///if no team wins or if there are no matches -1 is returned.
   @visibleForTesting
   int getTopTeamsId(List<Match> recentMatches) {
@@ -139,8 +140,8 @@ class PremierLeagueRepository {
 
   ///returns the top recent performing premier league team in the last 30 days.
   ///In the extreme case where all teams draw or there are no matches available a null value is returned.
-  ///Where more than one team has the same number of wins than the team that has won the most recent match.
-  ///or has won a match that is retrieveD later in the 'matches' database resource is prioritised.
+  ///Where more than one team has the highest number of wins, the team that has won the most recent match.
+  ///or has won a match that is retrieved later in the 'matches' database resource is prioritised (matches can have same time).
   Future<Team?> getTopPremierLeagueTeam() async {
     final Season season = await getRecentSeason();
     final List<Match> recentMatches = await getRecentMatches(season);

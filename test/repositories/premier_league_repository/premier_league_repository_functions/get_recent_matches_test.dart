@@ -15,11 +15,13 @@ void main() {
     final PremierLeagueRepository premierLeagueRepository =
         PremierLeagueRepository();
     late MockPremierLeagueService mockPremierLeagueService;
+    final seasonEndDate = DateTime(2022, 05, 22);
+
     setUp(() {
       mockPremierLeagueService = MockPremierLeagueService();
       premierLeagueRepository.premierLeagueService = mockPremierLeagueService;
     });
-    final seasonEndDate = DateTime(2022, 05, 22);
+
     test(
         "When 'getDateTo' is called and season is still active the dateTo is the current day",
         () {

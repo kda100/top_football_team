@@ -93,7 +93,7 @@ void main() {
     test(
         "when there are more than one top team 'getTopTeamId' returns the team who won last",
         () {
-      const primaryTeamId = 22;
+      const primaryTeamId = 22; //team who won most recent most in db.
       const secondaryTeamId = 25;
       final List<Match> matches = DummyMatchObjects.genTwoTopTeams(
           primaryTeamId: primaryTeamId, secondaryTeamId: secondaryTeamId);

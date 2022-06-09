@@ -49,7 +49,7 @@ void main() {
     });
 
     testWidgets(
-        "When api response is an success and there is no team to display a message is dispayed.",
+        "When api response is a success and there is no team to display a message is displayed.",
         (tester) async {
       await tester.pumpWidget(
         WidgetTesterWrapper(

@@ -20,11 +20,11 @@ class WidgetTesterWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<TopPremierLeagueTeamProvider>(
-        create: (context) =>
-            topPremierLeagueTeamProvider ??
-            CustomTopPremierLeagueTeamProvider(),
-        child: MaterialApp(
-          home: widget,
-        ));
+      create: (context) =>
+          topPremierLeagueTeamProvider ?? CustomTopPremierLeagueTeamProvider(),
+      child: MaterialApp(
+        home: widget,
+      ),
+    );
   }
 }

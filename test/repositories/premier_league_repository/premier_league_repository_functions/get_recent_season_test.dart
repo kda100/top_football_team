@@ -12,7 +12,7 @@ void main() {
         PremierLeagueRepository();
     late MockPremierLeagueService mockPremierLeagueService;
 
-    /// sets up repository object and mock service, then assign service to repository,
+    /// sets up mock service, then assign service to repository,
     /// so functionality can be mocked.
     setUp(() {
       mockPremierLeagueService = MockPremierLeagueService();

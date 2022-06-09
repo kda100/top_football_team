@@ -12,7 +12,7 @@ void main() {
         PremierLeagueRepository();
     late MockPremierLeagueService mockPremierLeagueService;
 
-    /// sets up repository object and mock service, then assign service to repository,
+    /// sets up mock service, then assign service to repository,
     /// so functionality can be mocked.
     setUp(() {
       mockPremierLeagueService = MockPremierLeagueService();
@@ -23,10 +23,6 @@ void main() {
       const teamId = 65;
       final teamJson = JsonMaps.genTeamJson(
         teamId: teamId,
-        name: "Manchester City FC",
-        crestLink: "https://crests.football-data.org/65.png",
-        venue: "Etihad Stadium",
-        yearFounded: 1880,
       );
       when(mockPremierLeagueService.getTeamJson(id: teamId))
           .thenAnswer((_) async => teamJson);

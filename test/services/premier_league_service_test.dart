@@ -21,7 +21,7 @@ void main() {
     final PremierLeagueService premierLeagueService = PremierLeagueService();
     late MockClient mockClient;
 
-    /// sets up PremierLeagueService object and MockClient, then assign MockClient to PremierLeagueService,
+    /// sets up MockClient, then assigns MockClient to PremierLeagueService,
     /// so functionality can be mocked.
     setUp(() {
       mockClient = MockClient();
@@ -37,7 +37,7 @@ void main() {
       expect(await testFunction(), jsonDecode(jsonData));
     }
 
-    void testFailedHttpGetFunction(String url, Function testFunction) {
+    void testFailedHttpGetFunction(String url, Function testFunction) async {
       when(mockClient.get(Uri.parse(url), headers: headers))
           .thenAnswer((_) async => http.Response("Not found", 404));
       expect(testFunction(), throwsException);
